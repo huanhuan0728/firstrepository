@@ -15,7 +15,10 @@
 typedef char TElemType; //假设二叉树结点类型为字符型
 #define  Status int
 #define TRUE 1
+#define OK 1
 #define FALSE 0
+#define OVERFLOW -1
+#define Error 0
 
 typedef struct BiTNode{
     TElemType data; //数据域
@@ -34,20 +37,20 @@ void DestroyBiTree(BiTree T);
 Status BiTreeEmpty(BiTree T);
 //对二叉树判空。若为空返回TRUE，不为空返回FALSE
 
-Status BreakBiTree(BiTree *T, BiTree *L, BiTree *R);
+Status BreakBiTree(BiTree T, BiTree L, BiTree R);
 //将一颗二叉树T分解成根，左子树，右子树
 
-Status ReplaceLeft(BiTree *T, BiTree *LT);
+Status ReplaceLeft(BiTree T, BiTree LT);
 //替换左子树。若T非空，则用LT替换T的左子树，并用LT返回T原有的左子树
 
-Status ReplaceRight(BiTree *R, BiTree *RT);
+Status ReplaceRight(BiTree R, BiTree RT);
 //替换右子树。若T非空，则用RT替换T的左子树，并用RT返回T原有的左子树
 
 
+Status visit(TElemType a);
 
-
-
-
+//中序遍历二叉树
+Status InOrderTraverse(BiTree T, Status(*visit)(TElemType));
 
 
 #endif /* SqBiTree_h */
