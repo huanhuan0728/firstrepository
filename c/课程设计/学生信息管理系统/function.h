@@ -13,7 +13,9 @@
 #define TSIZE   45
 struct student{
     char name[TSIZE];
+    unsigned int num;
     int score;
+    
 };
 
 //一般类型定义
