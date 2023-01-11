@@ -49,12 +49,12 @@ bool DeQueue(Item *pitem, Queue *pq);
 //操作：清空队列
 void EmptyQueue(Queue *pq);
 
-static void CopyToNode(int item, Item * pn){
-    pn->item = item;
+static void CopyToNode(Item temp, Item * pn){
+    pn->next = &temp;
 }
 
 static void CopyToItem(int * pn, Item *pi){
-    *pi = pn->item;
+//    *pi = pn->item;
 }
 
 
