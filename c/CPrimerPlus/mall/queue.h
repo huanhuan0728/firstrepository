@@ -2,7 +2,7 @@
 //  queue.h
 //  queue
 //
-//  Created by xuhuan lu on 2023/1/9.
+//  Created by xuhuan lu on 2023/1/3.
 //
 
 #ifndef queue_h
@@ -12,17 +12,16 @@
 #include <stdbool.h>
 
 //插入Item类型的定义，例如
-
+typedef int Item;
 #define MAXQUEUE 10
-typedef struct item{
-    long arrive;    //一位顾客加入队列的时间
-    int processtime;    //该顾客咨询时花费的时间
-    struct item *next;
-}Item;
+typedef struct node{
+    Item item;
+    struct node * next;
+}Node;
 
 typedef struct queue{
-    Item * front;   //  指向队列首项的指针
-    Item * rear;    //  指向队列尾项的指针
+    Node * front;   //  指向队列首项的指针
+    Node * rear;    //  指向队列尾项的指针
     int items;      //  队列中的项数
 }Queue;
 
@@ -49,12 +48,12 @@ bool DeQueue(Item *pitem, Queue *pq);
 //操作：清空队列
 void EmptyQueue(Queue *pq);
 
-static void CopyToNode(Item temp, Item * pn){
-    pn->next = &temp;
+static void CopyToNode(Item item, Node * pn){
+    pn->item = item;
 }
 
-static void CopyToItem(int * pn, Item *pi){
-//    *pi = pn->item;
+static void CopyToItem(Node * pn, Item *pi){
+    *pi = pn->item;
 }
 
 
