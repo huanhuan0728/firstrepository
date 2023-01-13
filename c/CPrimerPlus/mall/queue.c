@@ -2,7 +2,7 @@
 //  queue.c
 //  queue
 //
-//  Created by xuhuan lu on 2023/1/9.
+//  Created by xuhuan lu on 2023/1/3.
 //
 
 #include "queue.h"
@@ -37,11 +37,11 @@ int QueueItemCount(const Queue *pq){
 
 //操作：在队列末尾添加项
 bool EnQueue(Item item, Queue *pq){
-    Item *pnew;
+    Node *pnew;
     
     if(QueueIsFull(pq))
         return false;
-    pnew = (Item *)malloc(sizeof(Item));
+    pnew = (Node *)malloc(sizeof(Node));
     if(pnew == NULL){
         fprintf(stderr, "Unable to allocate memory!\n");
         exit(1);
@@ -60,7 +60,7 @@ bool EnQueue(Item item, Queue *pq){
 
 //操作：在队列的开头删除项
 bool DeQueue(Item *pitem, Queue *pq){
-    Item * pt;
+    Node * pt;
     
     if(QueueIsEmpty(pq))
         return false;
@@ -81,4 +81,3 @@ void EmptyQueue(Queue *pq){
     while(!QueueIsEmpty(pq))
         DeQueue(&dummy, pq);
 }
-
